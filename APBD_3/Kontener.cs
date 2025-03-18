@@ -2,15 +2,15 @@
 
 public class Kontener
 {
-    private int MasaLadunku { get; set; }
+    protected int MasaLadunku { get; set; }
     private int Wysokosc { get; set; }
     private int MasaKontenera { get; set; }
     private int Glebokosc { get; set; }
-    private string NumerSeryjny { get; set; }
     private char RodzajKontenera { get; set; }
-    private int MaxLadownosc { get; set; }
-
-    private static int _counter;
+    public string NumerSeryjny { get; set; }
+    protected int MaxLadownosc { get; set; }
+    
+    private static int _counter = 1;
 
     public Kontener(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc, 
         char rodzajKontenera, int maxLadownosc)
@@ -19,25 +19,35 @@ public class Kontener
         this.Wysokosc = wysokosc;
         MasaKontenera = masaKontenera;
         this.Glebokosc = glebokosc;
-        NumerSeryjny = CreateNumerSeryjny();
         RodzajKontenera = rodzajKontenera;
+        NumerSeryjny = CreateNumerSeryjny();
         MaxLadownosc = maxLadownosc;
     }
 
-    private string CreateNumerSeryjny()
+    protected string CreateNumerSeryjny()
     {
         return "KON-" + RodzajKontenera + "-" + _counter++;
+        
     }
 
-    public void OproznijLadunek()
+    public virtual void OproznijLadunek()
     {
         MasaLadunku = 0;
     }
 
-    public void ZaladujKonterer()
+    public virtual void ZaladujKonterer()
     {
         if (MasaLadunku > MaxLadownosc)
         {
+            throw new OverfillException();
         }
     }
+
+    public override string ToString()
+    {
+        return "Masa ładunku: " + MasaLadunku + ", numer seryjny: "
+               + NumerSeryjny + " i rodzaj kontenera: " +
+               RodzajKontenera;
+    }
+    
 }

@@ -16,9 +16,9 @@ public class Kontener
         char rodzajKontenera, int maxLadownosc)
     {
         MasaLadunku = masaLadunku;
-        this.Wysokosc = wysokosc;
+        Wysokosc = wysokosc;
         MasaKontenera = masaKontenera;
-        this.Glebokosc = glebokosc;
+        Glebokosc = glebokosc;
         RodzajKontenera = rodzajKontenera;
         NumerSeryjny = CreateNumerSeryjny();
         MaxLadownosc = maxLadownosc;

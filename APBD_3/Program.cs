@@ -6,23 +6,26 @@ class Program
     {
         Kontener kontener1 = new KontenerPlyny(1000, 20, 1, 30,
             1500, true);
-        Kontener kontener2 = new KontenerGaz(1000, 3, 1, 50,
+        Kontener kontener2 = new KontenerGaz(999, 3, 1, 50,
             1000, 1001);
         Kontener kontener3 = new KontenerChlodniczy(1000, 100, 2,
             150, 1500, "Bananas", 13.3);
-        Kontener kontener4 = new KontenerGaz(1000, 3, 1, 50,
+        Kontener kontener4 = new KontenerGaz(999, 3, 1, 50,
             1000, 1001);
         
         kontener1.ZaladujKonterer();
         kontener2.ZaladujKonterer();
         kontener3.ZaladujKonterer();
         
-        Kontenerowiec kontenerowiec1 = new Kontenerowiec(1, 3, 2);
-        kontenerowiec1.ZaladujKontener(kontener1);
+        Kontenerowiec kontenerowiec1 = new Kontenerowiec(1, 4, 10);
         
-        List<Kontener> list = new List<Kontener> { kontener1, kontener4, kontener3 };
+        List<Kontener> list = new List<Kontener> {kontener2, kontener3, kontener4 };
         kontenerowiec1.ZaladujKontener(list);
         
+        Console.WriteLine(kontenerowiec1);
+        kontenerowiec1.ZamianaKontenera("KON-G-2", kontener1);
+        Console.WriteLine(kontenerowiec1);
+
         kontenerowiec1.UsunKontener(kontener1);
         
         Console.WriteLine(kontener2);

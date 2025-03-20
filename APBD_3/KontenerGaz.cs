@@ -16,8 +16,8 @@ public class KontenerGaz(
         MasaLadunku = (int)(MasaLadunku * 0.05);
     }
 
-    public void Danger(string numer)
+    public void Danger(string numerSeryjny)
     {
-        Console.WriteLine("Niebezpieczna sytuacja, kontener: " + numer);
+        Console.WriteLine("Niebezpieczna sytuacja, kontener: " + numerSeryjny);
     }
 }

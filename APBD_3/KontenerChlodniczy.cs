@@ -1,53 +1,90 @@
 ﻿namespace APBD_3;
 
-public class KontenerChlodniczy : Kontener
+public class KontenerChlodniczy(
+    int masaLadunku,
+    int wysokosc,
+    int masaKontenera,
+    int glebokosc,
+    int maxLadownosc,
+    string rodzajProduktu,
+    double temperatura)
+    : Kontener(masaLadunku, wysokosc, masaKontenera, glebokosc, 'C', maxLadownosc)
 {
-    private string _rodzajProduktu;
-    private double _temperatura;
-    
-    public KontenerChlodniczy(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc, char rodzajKontenera,
-        int maxLadownosc, string rodzajProduktu, double temperatura)
-        : base(masaLadunku, wysokosc, masaKontenera, glebokosc, rodzajKontenera, maxLadownosc)
-    {
-        _rodzajProduktu = rodzajProduktu;
-        _temperatura = temperatura;
-    }
-
     public override void ZaladujKonterer()
     {
-        switch (_rodzajProduktu)
+        base.ZaladujKonterer();
+        switch (rodzajProduktu)
         {
             case "Bananas":
-                if (_temperatura > 13.3)
+                if (temperatura < 13.3)
                 {
-                    Console.WriteLine("Nieprawidłowa temperatura!");
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
                 }
+
+                break;
+            case "Chocolate":
+                if (temperatura < 18)
+                {
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
+                }
+
                 break;
             case "Fish":
-                if (_temperatura > 2)
+                if (temperatura < 2)
                 {
-                    Console.WriteLine("Nieprawidłowa temperatura!");
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
                 }
+
                 break;
-            case "Frozen Pizza":
-                if (_temperatura > -30)
+            case "Meat":
+                if (temperatura < -15)
                 {
-                    Console.WriteLine("Nieprawidłowa temperatura!");
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
                 }
+
+                break;
+            case "Ice cream":
+                if (temperatura < -18)
+                {
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
+                }
+
+                break;
+            case "Frozen pizza":
+                if (temperatura < -30)
+                {
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
+                }
+
+                break;
+            case "Cheese":
+                if (temperatura < 7.2)
+                {
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
+                }
+
+                break;
+            case "Sausages":
+                if (temperatura < 5)
+                {
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
+                }
+
                 break;
             case "Butter":
-                if (_temperatura > 20.5)
+                if (temperatura < 20.5)
                 {
-                    Console.WriteLine("Nieprawidłowa temperatura!");
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
                 }
+
                 break;
             case "Eggs":
-                if (_temperatura > 19)
+                if (temperatura < 19)
                 {
-                    Console.WriteLine("Nieprawidłowa temperatura!");
+                    Console.WriteLine("Nieprawidłowa temperatura dla: " + rodzajProduktu);
                 }
+
                 break;
-            
         }
     }
 }

@@ -4,23 +4,39 @@ class Program
 {
     static void Main(string[] args)
     {
-        Kontener kontener1 = new KontenerPlyny(5, 20, 2, 30,
-            'L', 10, false);
-        Kontener kontener2 = new KontenerGaz(10, 3, 2, 50,
-            'G', 20, 1001);
-        Kontener kontener3 = new KontenerChlodniczy(25, 100, 2, 150,
-            'C', 200, "Bananas", 0);
+        Kontener kontener1 = new KontenerPlyny(1000, 20, 1, 30,
+            1500, true);
+        Kontener kontener2 = new KontenerGaz(1000, 3, 1, 50,
+            1000, 1001);
+        Kontener kontener3 = new KontenerChlodniczy(1000, 100, 2,
+            150, 1500, "Bananas", 13.3);
+        Kontener kontener4 = new KontenerGaz(1000, 3, 1, 50,
+            1000, 1001);
+        
         kontener1.ZaladujKonterer();
         kontener2.ZaladujKonterer();
         kontener3.ZaladujKonterer();
-
-        Kontenerowiec kontenerowiec1 = new Kontenerowiec(20, 10, 200);
-        Kontenerowiec kontenerowiec2 = new Kontenerowiec(10, 15, 100);
-        kontenerowiec1.ZaladujKontener(kontener1);
-        kontenerowiec1.ZaladujKontener(kontener2);
-        kontenerowiec2.ZaladujKontener(kontener3);
         
-        Console.WriteLine(kontenerowiec1);
+        Kontenerowiec kontenerowiec1 = new Kontenerowiec(1, 3, 2);
+        kontenerowiec1.ZaladujKontener(kontener1);
+        
+        List<Kontener> list = new List<Kontener> { kontener1, kontener4, kontener3 };
+        kontenerowiec1.ZaladujKontener(list);
+        
+        kontenerowiec1.UsunKontener(kontener1);
+        
+        Console.WriteLine(kontener2);
+        kontener2.OproznijLadunek();
+        Console.WriteLine(kontener2);
+        
+        Kontenerowiec kontenerowiec2 = new Kontenerowiec(2, 3, 2);
+        kontenerowiec1.PrzeniesienieKontenera(kontener1, kontenerowiec2);
+        
         Console.WriteLine(kontenerowiec2);
+        Console.WriteLine(kontenerowiec1);
+
+        Kontenerowiec kontenerowiec3 = new Kontenerowiec(1, 3, 4);
+        kontenerowiec3.ZaladujKontener(list);
+        Console.WriteLine(kontenerowiec3);
     }
 }

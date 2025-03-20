@@ -4,15 +4,16 @@ public class KontenerPlyny : Kontener, IHazardNotifier
 {
     private bool _czyNiebezpieczny;
     
-    public KontenerPlyny(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc, char rodzajKontenera,
+    public KontenerPlyny(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc,
         int maxLadownosc, bool czyNiebezpieczny)
-        : base(masaLadunku, wysokosc, masaKontenera, glebokosc, rodzajKontenera, maxLadownosc)
+        : base(masaLadunku, wysokosc, masaKontenera, glebokosc, 'L', maxLadownosc)
     {
         _czyNiebezpieczny = czyNiebezpieczny;
     }
 
     public override void ZaladujKonterer()
     {
+        base.ZaladujKonterer();
         if (_czyNiebezpieczny && MasaLadunku <= MaxLadownosc * 0.5)
         {
 
@@ -27,8 +28,8 @@ public class KontenerPlyny : Kontener, IHazardNotifier
         }
     }
 
-    public void Danger(string numer)
+    public void Danger(string numerSeryjny)
     {
-        Console.WriteLine("Niebezpieczna sytuacja, kontener: " + numer);
+        Console.WriteLine("Niebezpieczna sytuacja, kontener: " + numerSeryjny);
     }
 }

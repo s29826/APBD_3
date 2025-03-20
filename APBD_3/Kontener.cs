@@ -2,17 +2,17 @@
 
 public class Kontener
 {
-    protected int MasaLadunku { get; set; }
+    public int MasaLadunku { get; set; }
     private int Wysokosc { get; set; }
-    private int MasaKontenera { get; set; }
+    public int MasaKontenera { get; set; }
     private int Glebokosc { get; set; }
     private char RodzajKontenera { get; set; }
     public string NumerSeryjny { get; set; }
     protected int MaxLadownosc { get; set; }
-    
+
     private static int _counter = 1;
 
-    public Kontener(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc, 
+    protected Kontener(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc,
         char rodzajKontenera, int maxLadownosc)
     {
         MasaLadunku = masaLadunku;
@@ -24,10 +24,9 @@ public class Kontener
         MaxLadownosc = maxLadownosc;
     }
 
-    protected string CreateNumerSeryjny()
+    private string CreateNumerSeryjny()
     {
         return "KON-" + RodzajKontenera + "-" + _counter++;
-        
     }
 
     public virtual void OproznijLadunek()
@@ -45,9 +44,8 @@ public class Kontener
 
     public override string ToString()
     {
-        return "Masa ładunku: " + MasaLadunku + ", numer seryjny: "
+        return "Masa ładunku: " + MasaLadunku + "kg; Maksymalna ładowność: " + MaxLadownosc + "kg; numer seryjny: "
                + NumerSeryjny + " i rodzaj kontenera: " +
                RodzajKontenera;
     }
-    
 }

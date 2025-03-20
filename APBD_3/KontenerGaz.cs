@@ -1,13 +1,15 @@
 ﻿namespace APBD_3;
 
-public class KontenerGaz : Kontener, IHazardNotifier
+public class KontenerGaz(
+    int masaLadunku,
+    int wysokosc,
+    int masaKontenera,
+    int glebokosc,
+    int maxLadownosc,
+    int cisnienie)
+    : Kontener(masaLadunku, wysokosc, masaKontenera, glebokosc, 'G', maxLadownosc), IHazardNotifier
 {
-    private int _cisnienie;
-    
-    public KontenerGaz(int masaLadunku, int wysokosc, int masaKontenera, int glebokosc, char rodzajKontenera, int maxLadownosc, int cisnienie) : base(masaLadunku, wysokosc, masaKontenera, glebokosc, rodzajKontenera, maxLadownosc)
-    {
-        _cisnienie = cisnienie;
-    }
+    private int _cisnienie = cisnienie;
 
     public override void OproznijLadunek()
     {
@@ -18,6 +20,4 @@ public class KontenerGaz : Kontener, IHazardNotifier
     {
         Console.WriteLine("Niebezpieczna sytuacja, kontener: " + numer);
     }
-    
-    
 }
